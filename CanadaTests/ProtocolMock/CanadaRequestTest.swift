@@ -1,23 +1,30 @@
 //
-//  CanadaFactRequest.swift
-//  Canada
+//  CanadaRequestTest.swift
+//  CanadaTests
 //
 //  Created by Philips on 4/11/19.
 //  Copyright © 2019 Shivam. All rights reserved.
 //
 
 import UIKit
+import Canada
 
-class CanadaFactRequest: RestRequestProtocol {
-   
-    static let factsEndpoint = "facts.json"
+class CanadaRequestTest: RestRequestProtocol {
+    var urlString:String?
+    
+    init(_ baseUrl: String?) {
+        urlString = baseUrl
+    }
     
     func getURL() -> URL? {
-        return URL(string: CanadaConstant.baseUrl + CanadaFactRequest.factsEndpoint)
+        if let url = urlString {
+            return URL(string: url)
+        }
+        return nil
     }
     
     func getMethodType() -> String {
-        return MethodType.GET.rawValue
+        return "GET"
     }
     
     func getHeaderContent() -> Dictionary<String, String>? {

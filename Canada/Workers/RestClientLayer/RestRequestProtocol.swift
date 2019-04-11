@@ -13,7 +13,7 @@ enum MethodType: String {
     case POST = "POST"
 }
 
-protocol RestRequestProtocol {
+public protocol RestRequestProtocol {
     func getURL() -> URL?
     func getMethodType() -> String
     func getHeaderContent() -> Dictionary<String, String>?

@@ -13,13 +13,14 @@
 		509096BC225F55A700FD349B /* Canada.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 509096BA225F55A700FD349B /* Canada.xcdatamodeld */; };
 		509096BE225F55A800FD349B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509096BD225F55A800FD349B /* Assets.xcassets */; };
 		509096C1225F55A800FD349B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509096BF225F55A800FD349B /* LaunchScreen.storyboard */; };
-		509096CC225F55A800FD349B /* CanadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096CB225F55A800FD349B /* CanadaTests.swift */; };
 		509096D7225F55A800FD349B /* CanadaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096D6225F55A800FD349B /* CanadaUITests.swift */; };
 		509096EF225FA48200FD349B /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096EC225FA48200FD349B /* RequestError.swift */; };
 		509096F0225FA48200FD349B /* RestClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096ED225FA48200FD349B /* RestClientManager.swift */; };
 		509096F1225FA48200FD349B /* RestRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096EE225FA48200FD349B /* RestRequestProtocol.swift */; };
 		509096F3225FB05300FD349B /* CanadaFactRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096F2225FB05300FD349B /* CanadaFactRequest.swift */; };
 		509096F6225FB18100FD349B /* CanadaConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096F5225FB18100FD349B /* CanadaConstant.swift */; };
+		509096F8225FB3F000FD349B /* RestClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096F7225FB3F000FD349B /* RestClientTest.swift */; };
+		509096FB225FB44300FD349B /* CanadaRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096FA225FB44300FD349B /* CanadaRequestTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,6 @@
 		509096C0225F55A800FD349B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		509096C2225F55A800FD349B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509096C7225F55A800FD349B /* CanadaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanadaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		509096CB225F55A800FD349B /* CanadaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaTests.swift; sourceTree = "<group>"; };
 		509096CD225F55A800FD349B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509096D2225F55A800FD349B /* CanadaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanadaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		509096D6225F55A800FD349B /* CanadaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaUITests.swift; sourceTree = "<group>"; };
@@ -59,6 +59,8 @@
 		509096EE225FA48200FD349B /* RestRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestRequestProtocol.swift; sourceTree = "<group>"; };
 		509096F2225FB05300FD349B /* CanadaFactRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaFactRequest.swift; sourceTree = "<group>"; };
 		509096F5225FB18100FD349B /* CanadaConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaConstant.swift; sourceTree = "<group>"; };
+		509096F7225FB3F000FD349B /* RestClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClientTest.swift; sourceTree = "<group>"; };
+		509096FA225FB44300FD349B /* CanadaRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaRequestTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +123,8 @@
 		509096CA225F55A800FD349B /* CanadaTests */ = {
 			isa = PBXGroup;
 			children = (
-				509096CB225F55A800FD349B /* CanadaTests.swift */,
+				509096FC225FB69C00FD349B /* RestClientTest */,
+				509096F9225FB3F500FD349B /* ProtocolMock */,
 				509096CD225F55A800FD349B /* Info.plist */,
 			);
 			path = CanadaTests;
@@ -197,6 +200,22 @@
 				509096F5225FB18100FD349B /* CanadaConstant.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		509096F9225FB3F500FD349B /* ProtocolMock */ = {
+			isa = PBXGroup;
+			children = (
+				509096FA225FB44300FD349B /* CanadaRequestTest.swift */,
+			);
+			path = ProtocolMock;
+			sourceTree = "<group>";
+		};
+		509096FC225FB69C00FD349B /* RestClientTest */ = {
+			isa = PBXGroup;
+			children = (
+				509096F7225FB3F000FD349B /* RestClientTest.swift */,
+			);
+			path = RestClientTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,7 +364,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509096CC225F55A800FD349B /* CanadaTests.swift in Sources */,
+				509096F8225FB3F000FD349B /* RestClientTest.swift in Sources */,
+				509096FB225FB44300FD349B /* CanadaRequestTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
