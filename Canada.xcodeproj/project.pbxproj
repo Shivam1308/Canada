@@ -15,6 +15,11 @@
 		509096C1225F55A800FD349B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509096BF225F55A800FD349B /* LaunchScreen.storyboard */; };
 		509096CC225F55A800FD349B /* CanadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096CB225F55A800FD349B /* CanadaTests.swift */; };
 		509096D7225F55A800FD349B /* CanadaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096D6225F55A800FD349B /* CanadaUITests.swift */; };
+		509096EF225FA48200FD349B /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096EC225FA48200FD349B /* RequestError.swift */; };
+		509096F0225FA48200FD349B /* RestClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096ED225FA48200FD349B /* RestClientManager.swift */; };
+		509096F1225FA48200FD349B /* RestRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096EE225FA48200FD349B /* RestRequestProtocol.swift */; };
+		509096F3225FB05300FD349B /* CanadaFactRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096F2225FB05300FD349B /* CanadaFactRequest.swift */; };
+		509096F6225FB18100FD349B /* CanadaConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096F5225FB18100FD349B /* CanadaConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		509096D2225F55A800FD349B /* CanadaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanadaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		509096D6225F55A800FD349B /* CanadaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaUITests.swift; sourceTree = "<group>"; };
 		509096D8225F55A800FD349B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		509096EC225FA48200FD349B /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		509096ED225FA48200FD349B /* RestClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClientManager.swift; sourceTree = "<group>"; };
+		509096EE225FA48200FD349B /* RestRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestRequestProtocol.swift; sourceTree = "<group>"; };
+		509096F2225FB05300FD349B /* CanadaFactRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaFactRequest.swift; sourceTree = "<group>"; };
+		509096F5225FB18100FD349B /* CanadaConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +174,29 @@
 		509096E8225F565D00FD349B /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				509096E9225FA43A00FD349B /* RestClientLayer */,
+				509096F4225FB16E00FD349B /* Helper */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		509096E9225FA43A00FD349B /* RestClientLayer */ = {
+			isa = PBXGroup;
+			children = (
+				509096F2225FB05300FD349B /* CanadaFactRequest.swift */,
+				509096EE225FA48200FD349B /* RestRequestProtocol.swift */,
+				509096ED225FA48200FD349B /* RestClientManager.swift */,
+				509096EC225FA48200FD349B /* RequestError.swift */,
+			);
+			path = RestClientLayer;
+			sourceTree = "<group>";
+		};
+		509096F4225FB16E00FD349B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				509096F5225FB18100FD349B /* CanadaConstant.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,7 +331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				509096B6225F55A700FD349B /* ViewController.swift in Sources */,
+				509096F6225FB18100FD349B /* CanadaConstant.swift in Sources */,
+				509096F3225FB05300FD349B /* CanadaFactRequest.swift in Sources */,
+				509096EF225FA48200FD349B /* RequestError.swift in Sources */,
+				509096F1225FA48200FD349B /* RestRequestProtocol.swift in Sources */,
 				509096BC225F55A700FD349B /* Canada.xcdatamodeld in Sources */,
+				509096F0225FA48200FD349B /* RestClientManager.swift in Sources */,
 				509096B4225F55A700FD349B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
