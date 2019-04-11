@@ -34,7 +34,7 @@ class RestClientTest: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
         XCTAssertNil(responseData)
     }
 
@@ -49,7 +49,7 @@ class RestClientTest: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 1, handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
         XCTAssertNotNil(responseData)
     }
 

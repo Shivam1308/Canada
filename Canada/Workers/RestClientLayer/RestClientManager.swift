@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 typealias RestClientCompletionHandler = (Data?, URLResponse?, Error?) -> Void
 
@@ -14,25 +15,16 @@ class RestClientManager {
 
     func invokeGetRequest(_ interface: RestRequestProtocol, completionHandler: @escaping RestClientCompletionHandler) {
         //Check urlrequest
-        if let request = makeGetRequest(interface) {
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
-                completionHandler(data, response, error)
-            }.resume()
+        if let url = interface.getURL(){
+            Alamofire.request(url).responseJSON { response in
+                completionHandler(response.data, response.response, response.result.error)
+            }
             return
         }
         //Customised Error
         let error = RequestError.invalidRequestParam
         completionHandler(nil, nil,error)
     }
-    
-    private func makeGetRequest(_ interface: RestRequestProtocol) -> URLRequest? {
-        //Check url
-        if let url = interface.getURL(){
-            var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = interface.getMethodType()
-            return urlRequest
-        }
-        return nil
-    }
+
 }
 
