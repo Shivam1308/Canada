@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D0A47DA80144ECC8849CB56 /* libPods-CanadaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65680F199B755D60F50D0A63 /* libPods-CanadaTests.a */; };
 		2F7FD206E080FFAA05C9E5C2 /* Pods_Canada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF9D8EBCBDE392454547B71 /* Pods_Canada.framework */; };
+		502937B322608217005D084D /* FactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502937B222608217005D084D /* FactCollectionViewCell.swift */; };
+		502937B5226082C0005D084D /* CollectionDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */; };
 		509096B4225F55A700FD349B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096B3225F55A700FD349B /* AppDelegate.swift */; };
 		509096B6225F55A700FD349B /* CanadaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096B5225F55A700FD349B /* CanadaViewController.swift */; };
-		509096B9225F55A700FD349B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509096B7225F55A700FD349B /* Main.storyboard */; };
 		509096BC225F55A700FD349B /* Canada.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 509096BA225F55A700FD349B /* Canada.xcdatamodeld */; };
 		509096BE225F55A800FD349B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509096BD225F55A800FD349B /* Assets.xcassets */; };
 		509096C1225F55A800FD349B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509096BF225F55A800FD349B /* LaunchScreen.storyboard */; };
@@ -47,10 +48,11 @@
 /* Begin PBXFileReference section */
 		0B80D19728991ACBD457C5A3 /* Pods-CanadaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanadaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CanadaUITests/Pods-CanadaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		168601AA6FA5E70C0F7C541D /* Pods-CanadaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanadaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CanadaUITests/Pods-CanadaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		502937B222608217005D084D /* FactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCollectionViewCell.swift; sourceTree = "<group>"; };
+		502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSourceDelegate.swift; sourceTree = "<group>"; };
 		509096B0225F55A700FD349B /* Canada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509096B3225F55A700FD349B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		509096B5225F55A700FD349B /* CanadaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaViewController.swift; sourceTree = "<group>"; };
-		509096B8225F55A700FD349B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		509096BB225F55A700FD349B /* Canada.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Canada.xcdatamodel; sourceTree = "<group>"; };
 		509096BD225F55A800FD349B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		509096C0225F55A800FD349B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -130,6 +132,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		502937B0226081E1005D084D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				509096B5225F55A700FD349B /* CanadaViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		502937B1226081EE005D084D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				502937B222608217005D084D /* FactCollectionViewCell.swift */,
+				502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		509096A7225F55A700FD349B = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +205,6 @@
 		509096E4225F55B200FD349B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				509096B7225F55A700FD349B /* Main.storyboard */,
 				509096BD225F55A800FD349B /* Assets.xcassets */,
 				509096BF225F55A800FD349B /* LaunchScreen.storyboard */,
 			);
@@ -204,7 +222,8 @@
 		509096E6225F55E000FD349B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				509096B5225F55A700FD349B /* CanadaViewController.swift */,
+				502937B1226081EE005D084D /* Views */,
+				502937B0226081E1005D084D /* Controllers */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -372,7 +391,6 @@
 			files = (
 				509096C1225F55A800FD349B /* LaunchScreen.storyboard in Resources */,
 				509096BE225F55A800FD349B /* Assets.xcassets in Resources */,
-				509096B9225F55A700FD349B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,12 +492,14 @@
 			files = (
 				509096B6225F55A700FD349B /* CanadaViewController.swift in Sources */,
 				509096F6225FB18100FD349B /* CanadaConstant.swift in Sources */,
+				502937B322608217005D084D /* FactCollectionViewCell.swift in Sources */,
 				509096F3225FB05300FD349B /* CanadaFactRequest.swift in Sources */,
 				509096EF225FA48200FD349B /* RequestError.swift in Sources */,
 				509096F1225FA48200FD349B /* RestRequestProtocol.swift in Sources */,
 				509096BC225F55A700FD349B /* Canada.xcdatamodeld in Sources */,
 				509096F0225FA48200FD349B /* RestClientManager.swift in Sources */,
 				509096B4225F55A700FD349B /* AppDelegate.swift in Sources */,
+				502937B5226082C0005D084D /* CollectionDataSourceDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,14 +536,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		509096B7225F55A700FD349B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				509096B8225F55A700FD349B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		509096BF225F55A800FD349B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -586,7 +598,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IBSC_FLATTEN_NIBS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -641,7 +654,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IBSC_FLATTEN_NIBS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
