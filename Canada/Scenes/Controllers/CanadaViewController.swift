@@ -11,17 +11,21 @@ import UIKit
 class CanadaViewController: UIViewController {
 
     var factCollection: UICollectionView!
-    let factDataSourceAndDelegate = CollectionDataSourceDelegate()
+    lazy var factDataSourceAndDelegate = CollectionDataSourceDelegate()
+    var dataPresent: Bool = false
+    var factsData: CanadaFacts?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchFactsFromStorage()
         createCollectionViewWithLayout()
+        restRequestForCanadaFacts()
     }
 }
 
 extension CanadaViewController {
+    
     func createCollectionViewWithLayout() {
-        
         //Adding collection view
         let frame = self.view.frame
         let layout = UICollectionViewFlowLayout()
@@ -40,6 +44,44 @@ extension CanadaViewController {
         factCollection.register(FactCollectionViewCell.self, forCellWithReuseIdentifier: "factCell")
         factCollection.delegate = factDataSourceAndDelegate
         factCollection.dataSource = factDataSourceAndDelegate
+        factCollection.reloadData()
     }
+    
+    func fetchFactsFromStorage() {
+        do {
+            factsData = try CanadaConstant.fetchFileWithName(CanadaConstant.factsEndpoint)
+            self.title = factsData?.title
+            dataPresent = true
+        }catch{
+            factsData = nil
+        }
+    }
+    
+    func restRequestForCanadaFacts() {
+        let restManager = RestClientManager()
+        let requestInterface = CanadaFactRequest()
+        restManager.invokeGetRequest(requestInterface) { [unowned self] (data, response, error) in
+            
+            //Check error
+            if let error = error {
+                CanadaConstant.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
+            }
+            
+            //Check Data
+            if let data = data {
+                do {
+                    let newStr = String(data: data, encoding: .iso2022JP)
+                    let newData = newStr!.data(using: String.Encoding.utf8)
+                    _ = try CanadaConstant.saveFactsToFile(newData!, CanadaConstant.factsEndpoint)
+                }catch{
+                    CanadaConstant.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    
+    
+    
 }
 

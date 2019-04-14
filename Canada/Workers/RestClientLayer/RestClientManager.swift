@@ -14,10 +14,11 @@ typealias RestClientCompletionHandler = (Data?, URLResponse?, Error?) -> Void
 class RestClientManager {
 
     func invokeGetRequest(_ interface: RestRequestProtocol, completionHandler: @escaping RestClientCompletionHandler) {
+        
         //Check urlrequest
         if let url = interface.getURL(){
-            Alamofire.request(url).responseJSON { response in
-                completionHandler(response.data, response.response, response.result.error)
+            Alamofire.request(url).response { response in
+                completionHandler(response.data, response.response, response.error)
             }
             return
         }

@@ -25,8 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let canadaViewController = CanadaViewController()
         navigationController.viewControllers = [canadaViewController]
         navigationController.navigationBar.barTintColor = UIColor(red: 47/255, green: 106/255, blue: 158/255, alpha: 1.0)
+        navigationController.navigationBar.tintColor = UIColor.white
         navigationController.navigationBar.isTranslucent = false
-        
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
         //Adding Navigation controller to window
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

@@ -9,11 +9,9 @@
 import UIKit
 
 class CanadaFactRequest: RestRequestProtocol {
-   
-    static let factsEndpoint = "facts.json"
     
     func getURL() -> URL? {
-        return URL(string: CanadaConstant.baseUrl + CanadaFactRequest.factsEndpoint)
+        return URL(string: CanadaConstant.baseUrl + CanadaConstant.factsEndpoint)
     }
     
     func getMethodType() -> String {

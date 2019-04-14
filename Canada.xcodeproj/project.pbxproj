@@ -11,9 +11,9 @@
 		2F7FD206E080FFAA05C9E5C2 /* Pods_Canada.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF9D8EBCBDE392454547B71 /* Pods_Canada.framework */; };
 		502937B322608217005D084D /* FactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502937B222608217005D084D /* FactCollectionViewCell.swift */; };
 		502937B5226082C0005D084D /* CollectionDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */; };
+		502937B722609B91005D084D /* CanadaFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502937B622609B91005D084D /* CanadaFacts.swift */; };
 		509096B4225F55A700FD349B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096B3225F55A700FD349B /* AppDelegate.swift */; };
 		509096B6225F55A700FD349B /* CanadaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096B5225F55A700FD349B /* CanadaViewController.swift */; };
-		509096BC225F55A700FD349B /* Canada.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 509096BA225F55A700FD349B /* Canada.xcdatamodeld */; };
 		509096BE225F55A800FD349B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509096BD225F55A800FD349B /* Assets.xcassets */; };
 		509096C1225F55A800FD349B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 509096BF225F55A800FD349B /* LaunchScreen.storyboard */; };
 		509096D7225F55A800FD349B /* CanadaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096D6225F55A800FD349B /* CanadaUITests.swift */; };
@@ -50,10 +50,10 @@
 		168601AA6FA5E70C0F7C541D /* Pods-CanadaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CanadaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CanadaUITests/Pods-CanadaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		502937B222608217005D084D /* FactCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCollectionViewCell.swift; sourceTree = "<group>"; };
 		502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSourceDelegate.swift; sourceTree = "<group>"; };
+		502937B622609B91005D084D /* CanadaFacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanadaFacts.swift; sourceTree = "<group>"; };
 		509096B0225F55A700FD349B /* Canada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509096B3225F55A700FD349B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		509096B5225F55A700FD349B /* CanadaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanadaViewController.swift; sourceTree = "<group>"; };
-		509096BB225F55A700FD349B /* Canada.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Canada.xcdatamodel; sourceTree = "<group>"; };
 		509096BD225F55A800FD349B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		509096C0225F55A800FD349B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		509096C2225F55A800FD349B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		509096E5225F55C900FD349B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				509096BA225F55A700FD349B /* Canada.xcdatamodeld */,
+				502937B622609B91005D084D /* CanadaFacts.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -496,10 +496,10 @@
 				509096F3225FB05300FD349B /* CanadaFactRequest.swift in Sources */,
 				509096EF225FA48200FD349B /* RequestError.swift in Sources */,
 				509096F1225FA48200FD349B /* RestRequestProtocol.swift in Sources */,
-				509096BC225F55A700FD349B /* Canada.xcdatamodeld in Sources */,
 				509096F0225FA48200FD349B /* RestClientManager.swift in Sources */,
 				509096B4225F55A700FD349B /* AppDelegate.swift in Sources */,
 				502937B5226082C0005D084D /* CollectionDataSourceDelegate.swift in Sources */,
+				502937B722609B91005D084D /* CanadaFacts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,19 +839,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		509096BA225F55A700FD349B /* Canada.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				509096BB225F55A700FD349B /* Canada.xcdatamodel */,
-			);
-			currentVersion = 509096BB225F55A700FD349B /* Canada.xcdatamodel */;
-			path = Canada.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 509096A8225F55A700FD349B /* Project object */;
 }
