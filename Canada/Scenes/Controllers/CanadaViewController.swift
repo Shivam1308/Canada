@@ -70,7 +70,8 @@ extension CanadaViewController {
     
     @objc func receivedCallbackFromCanadaManager(_ noti :NSNotification?) {
         self.refreshControl.endRefreshing()
-        //set bool for ref
+        
+        //set bool for data present
         UserDefaults.standard.set(true, forKey: dataPresent);      CanadaHelper.hideActivityIndicator(self.view)
         DispatchQueue.main.async {
             self.factCollection.delegate = self.factDataSourceAndDelegate

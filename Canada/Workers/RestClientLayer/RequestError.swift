@@ -12,6 +12,7 @@ enum RequestError: Error {
     case invalidRequestParam
 }
 
+/* RequestError to set error for multiple case */
 extension RequestError: LocalizedError {
     public var errorDescription: String? {
         switch self {

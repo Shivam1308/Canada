@@ -14,6 +14,7 @@ class CollectionDataSourceDelegate: NSObject, UICollectionViewDelegate, UICollec
     
     override init() {
         do {
+            // fetch facts
             facts = try CanadaHelper.fetchFileWithName(CanadaHelper.factsEndpoint)
         } catch {
         }

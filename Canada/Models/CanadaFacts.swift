@@ -8,6 +8,7 @@
 
 import Foundation
 
+/* Fetch Data Model */
 struct CanadaFacts: Codable {
     let title: String?
     let rows: [Row]

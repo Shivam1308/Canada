@@ -8,10 +8,10 @@
 
 import UIKit
 
+/* UIView helper file to set auto layout anchors */
 extension UIView {
     
     public func addConstraintsWithFormat(_ format: String, views: UIView...) {
-        
         var viewsDictionary = [String: UIView]()
         for (index, view) in views.enumerated() {
             let key = "v\(index)"

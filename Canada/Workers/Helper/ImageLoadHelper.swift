@@ -12,6 +12,7 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
     
+    /* loadImageUsingString: Load image async with image cache */
     func loadImageUsingString(urlString: String) {
         if let url = URL(string: urlString) {
             
@@ -42,6 +43,7 @@ extension UIImageView {
         }
     }
     
+    /* removeAllCachedKeys: Remove cached save response */
     func removeAllCachedKeys() {
         imageCache.removeAllObjects()
     }

@@ -13,6 +13,7 @@ enum MethodType: String {
     case POST = "POST"
 }
 
+/* RestRequestProtocol to set request protocol methods */
 public protocol RestRequestProtocol {
     func getURL() -> URL?
     func getMethodType() -> String

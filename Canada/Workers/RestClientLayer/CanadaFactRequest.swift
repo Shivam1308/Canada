@@ -8,6 +8,7 @@
 
 import UIKit
 
+/* CanadaFactRequest to set request params*/
 class CanadaFactRequest: RestRequestProtocol {
     
     func getURL() -> URL? {

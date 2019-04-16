@@ -14,6 +14,7 @@ class FactCollectionViewCell: UICollectionViewCell {
     static let PlaceHolder = "Placeholder"
     static let imageSize: CGFloat = 60
 
+    /* photoImageView: Image for cell */
     let photoImageView: UIImageView = {
         let iv =  UIImageView(frame: CGRect.zero)
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +25,7 @@ class FactCollectionViewCell: UICollectionViewCell {
         return iv
     }()
     
+    /* titleLabel: Title Label for cell */
     let titleLabel: UILabel = {
         let label = UILabel()
         let boldHelveticaFont = UIFont(name: "Helvetica Neue", size: 15)?.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits.traitBold)
@@ -34,6 +36,7 @@ class FactCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /* descriptionLabel: Description for cell */
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = CanadaHelper.themeColor
@@ -53,6 +56,7 @@ class FactCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
     
+        //Layout with uiview extension file
         photoImageView.anchor(self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 10, bottomConstant: 0, rightConstant: 0, widthConstant: FactCollectionViewCell.imageSize, heightConstant: FactCollectionViewCell.imageSize)
         
         titleLabel.anchor(self.topAnchor, left: self.photoImageView.rightAnchor, bottom: nil, right: self.rightAnchor, topConstant: 12, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)

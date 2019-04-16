@@ -150,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				502937B222608217005D084D /* FactCollectionViewCell.swift */,
-				502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,8 +227,9 @@
 		509096E5225F55C900FD349B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				502937B622609B91005D084D /* CanadaFacts.swift */,
 				5036140C2265A22600BFA8C0 /* CanadaFactManager.swift */,
+				502937B622609B91005D084D /* CanadaFacts.swift */,
+				502937B4226082C0005D084D /* CollectionDataSourceDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
