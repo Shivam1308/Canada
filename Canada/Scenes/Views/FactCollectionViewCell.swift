@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FactCollectionViewCell: UICollectionViewCell {
+public class FactCollectionViewCell: UICollectionViewCell {
     
     static let Id = "factCell"
     static let PlaceHolder = "Placeholder"
@@ -29,7 +29,7 @@ class FactCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         let boldHelveticaFont = UIFont(name: "Helvetica Neue", size: 15)?.fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits.traitBold)
-        label.font = UIFont(descriptor: boldHelveticaFont!, size: 15)
+        label.font = UIFont(descriptor: boldHelveticaFont!, size: 17)
         label.textColor = UIColor.black
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +53,7 @@ class FactCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(descriptionLabel)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
     
         //Layout with uiview extension file

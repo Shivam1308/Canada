@@ -12,7 +12,7 @@ class CanadaViewController: UIViewController {
 
     var factCollection: UICollectionView!
     var refreshControl: UIRefreshControl!
-    lazy var factDataSourceAndDelegate = CollectionDataSourceDelegate()
+    lazy var factDataSourceAndDelegate = FactsDataSourceDelegate()
     let dataPresent = "DataPresent"
     
     override func viewDidLoad() {
@@ -56,7 +56,6 @@ extension CanadaViewController {
         if UserDefaults.standard.bool(forKey: dataPresent) {
             self.receivedCallbackFromCanadaManager(nil)
         }
-
     }
     
     func invokeRequestLoader() {

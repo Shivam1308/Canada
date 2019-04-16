@@ -8,14 +8,15 @@
 
 import UIKit
 
-class CollectionDataSourceDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class FactsDataSourceDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var facts: CanadaFacts?
     
     override init() {
         do {
             // fetch facts
-            facts = try CanadaHelper.fetchFileWithName(CanadaHelper.factsEndpoint)
+            let data = try CanadaHelper.fetchFileWithName(CanadaHelper.factsEndpoint)
+            facts = try JSONDecoder().decode(CanadaFacts.self, from: data!)
         } catch {
         }
     }

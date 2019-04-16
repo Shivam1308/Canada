@@ -13,7 +13,7 @@ let imageCache = NSCache<AnyObject, AnyObject>()
 extension UIImageView {
     
     /* loadImageUsingString: Load image async with image cache */
-    func loadImageUsingString(urlString: String) {
+    @objc public func loadImageUsingString(urlString: String) {
         if let url = URL(string: urlString) {
             
             //Cache
@@ -33,7 +33,7 @@ extension UIImageView {
                 DispatchQueue.main.async {
                     if let image = UIImage(data: data!){
                         imageCache.setObject(image, forKey: urlString as AnyObject)
-                    self?.image = UIImage(data: data!)
+                        self?.image = UIImage(data: data!)
                     }else{
                         self?.image = UIImage(named: FactCollectionViewCell.PlaceHolder)
 

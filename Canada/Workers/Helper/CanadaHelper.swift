@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CanadaHelper {
+public class CanadaHelper {
 
     static let baseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/"
     static let factsEndpoint = "facts.json"
@@ -39,12 +39,11 @@ class CanadaHelper {
     }
     
     /* fetchFileWithName: fetch file from local directory */
-    class func fetchFileWithName(_ fileName: String)throws -> CanadaFacts? {
+    class func fetchFileWithName(_ fileName: String)throws -> Data? {
         let filename = getDocumentsDirectory().appendingPathComponent(fileName)
         do {
             let data = try Data(contentsOf: filename)
-            let canadaFacts = try JSONDecoder().decode(CanadaFacts.self, from: data)
-            return canadaFacts 
+            return data
         } catch {
             throw error
         }
