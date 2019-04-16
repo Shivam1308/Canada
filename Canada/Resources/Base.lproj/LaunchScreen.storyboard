@@ -24,14 +24,22 @@
                                     <constraint firstAttribute="height" constant="123" id="kCb-6a-QaB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="43"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="qKP-u1-7BH">
+                                <rect key="frame" x="137.5" y="210" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="AqO-ZN-vYn"/>
+                                    <constraint firstAttribute="height" constant="100" id="AzV-ZF-s6O"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1843137255" green="0.41568627450000001" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qW1-8c-TAG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="14K-UR-VDx"/>
+                            <constraint firstItem="qKP-u1-7BH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7m3-mh-h6a"/>
                             <constraint firstItem="qW1-8c-TAG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ARe-MI-GXw"/>
+                            <constraint firstItem="qW1-8c-TAG" firstAttribute="top" secondItem="qKP-u1-7BH" secondAttribute="bottom" constant="-28" id="r9V-SK-xXJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -41,4 +49,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Placeholder" width="279" height="259"/>
+    </resources>
 </document>

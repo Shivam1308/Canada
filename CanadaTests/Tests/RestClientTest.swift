@@ -26,7 +26,7 @@ class RestClientTest: XCTestCase {
 /* RestClient Test case Fail */
     func testRestClientFail() {
         let restProtocol = CanadaRequestTest(nil)
-        let expectation = self.expectation(description: "delegate is called 3 times")
+        let expectation = self.expectation(description: "Not a valid response")
         
         restClient?.invokeGetRequest(restProtocol, completionHandler: { [weak self](data, response, error) in
             if let data = data{
@@ -41,7 +41,7 @@ class RestClientTest: XCTestCase {
 /* RestClient Test case Pass */
     func testRestClientPass() {
         let restProtocol = CanadaRequestTest(baseUrl)
-        let expectation = self.expectation(description: "delegate is called 3 times")
+        let expectation = self.expectation(description: "Not a valid response")
         
         restClient?.invokeGetRequest(restProtocol, completionHandler: { [weak self](data, response, error) in
             if let data = data{
@@ -49,7 +49,7 @@ class RestClientTest: XCTestCase {
             }
             expectation.fulfill()
         })
-        waitForExpectations(timeout: 2, handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
         XCTAssertNotNil(responseData)
     }
 

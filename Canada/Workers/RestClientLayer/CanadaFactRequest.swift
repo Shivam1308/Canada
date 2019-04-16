@@ -11,7 +11,7 @@ import UIKit
 class CanadaFactRequest: RestRequestProtocol {
     
     func getURL() -> URL? {
-        return URL(string: CanadaConstant.baseUrl + CanadaConstant.factsEndpoint)
+        return URL(string: CanadaHelper.baseUrl + CanadaHelper.factsEndpoint)
     }
     
     func getMethodType() -> String {

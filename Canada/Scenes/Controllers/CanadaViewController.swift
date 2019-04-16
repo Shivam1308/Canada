@@ -11,26 +11,35 @@ import UIKit
 class CanadaViewController: UIViewController {
 
     var factCollection: UICollectionView!
+    var refreshControl: UIRefreshControl!
     lazy var factDataSourceAndDelegate = CollectionDataSourceDelegate()
-    var dataPresent: Bool = false
-    var factsData: CanadaFacts?
+    let dataPresent = "DataPresent"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchFactsFromStorage()
         createCollectionViewWithLayout()
-        restRequestForCanadaFacts()
+        invokeRequestLoader()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedCallbackFromCanadaManager), name: Notification.Name("factApiCallback"), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("factApiCallback"), object: nil)
     }
 }
 
 extension CanadaViewController {
-    
+
     func createCollectionViewWithLayout() {
         //Adding collection view
         let frame = self.view.frame
         let layout = UICollectionViewFlowLayout()
         factCollection = UICollectionView(frame: frame, collectionViewLayout: layout)
         factCollection.backgroundColor = UIColor.white
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = CanadaHelper.themeColor
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        factCollection.addSubview(refreshControl)
+        factCollection.alwaysBounceVertical = true
         self.view.addSubview(factCollection)
         
         //Auto layout for collection view
@@ -41,47 +50,48 @@ extension CanadaViewController {
         factCollection.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         
         //Register cell and delegate call
-        factCollection.register(FactCollectionViewCell.self, forCellWithReuseIdentifier: "factCell")
-        factCollection.delegate = factDataSourceAndDelegate
-        factCollection.dataSource = factDataSourceAndDelegate
-        factCollection.reloadData()
+        factCollection.register(FactCollectionViewCell.self, forCellWithReuseIdentifier: FactCollectionViewCell.Id)
+        
+        //Check for data loaded
+        if UserDefaults.standard.bool(forKey: dataPresent) {
+            self.receivedCallbackFromCanadaManager(nil)
+        }
+
     }
     
-    func fetchFactsFromStorage() {
-        do {
-            factsData = try CanadaConstant.fetchFileWithName(CanadaConstant.factsEndpoint)
-            self.title = factsData?.title
-            dataPresent = true
-        }catch{
-            factsData = nil
+    func invokeRequestLoader() {
+        CanadaHelper.showActivityIndicator(self.view)
+        
+        //Request for server data
+        let canadaManager = CanadaFactManager()
+        canadaManager.requestCanadaFacts()
+        
+    }
+    
+    @objc func receivedCallbackFromCanadaManager(_ noti :NSNotification?) {
+        self.refreshControl.endRefreshing()
+        //set bool for ref
+        UserDefaults.standard.set(true, forKey: dataPresent);      CanadaHelper.hideActivityIndicator(self.view)
+        DispatchQueue.main.async {
+            self.factCollection.delegate = self.factDataSourceAndDelegate
+            self.factCollection.dataSource = self.factDataSourceAndDelegate
+            self.factCollection.reloadData()
+            self.title = self.factDataSourceAndDelegate.facts?.title
+        }
+        //Error check
+        if let error = noti?.object as? Error{
+            CanadaHelper.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
         }
     }
     
-    func restRequestForCanadaFacts() {
-        let restManager = RestClientManager()
-        let requestInterface = CanadaFactRequest()
-        restManager.invokeGetRequest(requestInterface) { [unowned self] (data, response, error) in
-            
-            //Check error
-            if let error = error {
-                CanadaConstant.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
-            }
-            
-            //Check Data
-            if let data = data {
-                do {
-                    let newStr = String(data: data, encoding: .iso2022JP)
-                    let newData = newStr!.data(using: String.Encoding.utf8)
-                    _ = try CanadaConstant.saveFactsToFile(newData!, CanadaConstant.factsEndpoint)
-                }catch{
-                    CanadaConstant.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
-                }
-            }
-        }
+    @objc func refreshData() {
+        //refresh by setting delegate and souce with cache null
+        self.factCollection.delegate = nil
+        self.factCollection.dataSource = nil
+        UIImageView().removeAllCachedKeys()
+        
+        //call for request
+        invokeRequestLoader()
     }
-    
-    
-    
-    
 }
 
