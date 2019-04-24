@@ -8,29 +8,29 @@
 
 import Foundation
 
+typealias ManagerCompletionHandler = (Data?, Error?) -> Void
+
 class CanadaFactManager {
     
-    func requestCanadaFacts() {
+    func requestCanadaFacts(_ completionHandler: @escaping ManagerCompletionHandler) {
         let restManager = RestClientManager()
         let requestInterface = CanadaFactRequest()
         restManager.invokeGetRequest(requestInterface) {(data, response, error) in
             //Check error
             if error != nil {
-                NotificationCenter.default.post(name: Notification.Name("factApiCallback"), object: error, userInfo: nil)
+                completionHandler(nil,error)
                 return
             }
             //Check Data
             if let data = data {
-                do {
                     if let newStr = String(data: data, encoding: .iso2022JP){
                         let newData = newStr.data(using: String.Encoding.utf8)
-                        _ = try CanadaHelper.saveFactsToFile(newData!, CanadaHelper.factsEndpoint)
-                        NotificationCenter.default.post(name: Notification.Name("factApiCallback"), object: nil, userInfo: nil)
+                        completionHandler(newData, nil)
                         return
                     }
-                }catch{
-                    NotificationCenter.default.post(name: Notification.Name("factApiCallback"), object: error, userInfo: nil)
-                }
             }
+            //Customised Error
+            let error = RequestError.invalidDataFormat
+            completionHandler(nil,error)
         }
     }}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CanadaViewController: UIViewController {
 
@@ -14,31 +15,42 @@ class CanadaViewController: UIViewController {
     var refreshControl: UIRefreshControl!
     lazy var factDataSourceAndDelegate = FactsDataSourceDelegate()
     let dataPresent = "DataPresent"
-    
+    let reachabilityManager = NetworkReachabilityManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         createCollectionViewWithLayout()
+        addInternetListener()
         invokeRequestLoader()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedCallbackFromCanadaManager), name: Notification.Name("factApiCallback"), object: nil)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("factApiCallback"), object: nil)
+    func addInternetListener() {
+        reachabilityManager?.startListening()
+        reachabilityManager?.listener = { [unowned self] _ in
+            if let isNetworkReachable = self.reachabilityManager?.isReachable,
+                isNetworkReachable == true {
+                //Adding refresh Control
+                self.refreshControl = UIRefreshControl()
+                self.refreshControl.tintColor = CanadaHelper.themeColor
+                self.refreshControl.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
+                self.factCollection.addSubview(self.refreshControl)
+                self.view.addSubview(self.factCollection)
+            } else {
+                self.refreshControl.removeFromSuperview()
+            }
+        }
     }
 }
 
 extension CanadaViewController {
 
     func createCollectionViewWithLayout() {
+        
         //Adding collection view
         let frame = self.view.frame
         let layout = UICollectionViewFlowLayout()
         factCollection = UICollectionView(frame: frame, collectionViewLayout: layout)
         factCollection.backgroundColor = UIColor.white
-        refreshControl = UIRefreshControl()
-        refreshControl.tintColor = CanadaHelper.themeColor
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        factCollection.addSubview(refreshControl)
         factCollection.alwaysBounceVertical = true
         self.view.addSubview(factCollection)
         
@@ -52,35 +64,39 @@ extension CanadaViewController {
         //Register cell and delegate call
         factCollection.register(FactCollectionViewCell.self, forCellWithReuseIdentifier: FactCollectionViewCell.Id)
         
-        //Check for data loaded
-        if UserDefaults.standard.bool(forKey: dataPresent) {
-            self.receivedCallbackFromCanadaManager(nil)
-        }
     }
     
     func invokeRequestLoader() {
         CanadaHelper.showActivityIndicator(self.view)
-        
         //Request for server data
         let canadaManager = CanadaFactManager()
-        canadaManager.requestCanadaFacts()
-        
-    }
-    
-    @objc func receivedCallbackFromCanadaManager(_ noti :NSNotification?) {
-        self.refreshControl.endRefreshing()
-        
-        //set bool for data present
-        UserDefaults.standard.set(true, forKey: dataPresent);      CanadaHelper.hideActivityIndicator(self.view)
-        DispatchQueue.main.async {
-            self.factCollection.delegate = self.factDataSourceAndDelegate
-            self.factCollection.dataSource = self.factDataSourceAndDelegate
-            self.factCollection.reloadData()
-            self.title = self.factDataSourceAndDelegate.facts?.title
-        }
-        //Error check
-        if let error = noti?.object as? Error{
-            CanadaHelper.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
+        canadaManager.requestCanadaFacts {[unowned self](data, error) in
+
+            DispatchQueue.main.async {
+            CanadaHelper.hideActivityIndicator(self.view)
+                if (self.refreshControl != nil) {
+                    self.refreshControl.endRefreshing()
+                }
+            }
+            //Error check
+            if let error = error{
+                CanadaHelper.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
+                return
+            }
+            
+            do {
+                // fetch facts
+                self.factDataSourceAndDelegate.facts = try JSONDecoder().decode(CanadaFacts.self, from: data!)
+                self.factCollection.delegate = self.factDataSourceAndDelegate
+                self.factCollection.dataSource = self.factDataSourceAndDelegate
+
+                DispatchQueue.main.async {
+                    self.factCollection.reloadData()
+                    self.title = self.factDataSourceAndDelegate.facts?.title
+                }
+            } catch {
+                CanadaHelper.showAlertMessage(controller: self, titleStr: "Error", messageStr: error.localizedDescription)
+            }
         }
     }
     

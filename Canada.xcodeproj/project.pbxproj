@@ -18,7 +18,6 @@
 		503614112265E88000BFA8C0 /* ImageViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503614102265E88000BFA8C0 /* ImageViewTest.swift */; };
 		503614132265F4E500BFA8C0 /* SwizzlingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503614122265F4E500BFA8C0 /* SwizzlingTest.swift */; };
 		503614162265FA2B00BFA8C0 /* Singeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503614152265FA2B00BFA8C0 /* Singeleton.swift */; };
-		503614182265FD1200BFA8C0 /* FileStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503614172265FD1200BFA8C0 /* FileStorageTest.swift */; };
 		5036141A2266166000BFA8C0 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503614192266166000BFA8C0 /* ViewControllerTest.swift */; };
 		509096B4225F55A700FD349B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096B3225F55A700FD349B /* AppDelegate.swift */; };
 		509096B6225F55A700FD349B /* CanadaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509096B5225F55A700FD349B /* CanadaViewController.swift */; };
@@ -56,7 +55,6 @@
 		503614102265E88000BFA8C0 /* ImageViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewTest.swift; sourceTree = "<group>"; };
 		503614122265F4E500BFA8C0 /* SwizzlingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwizzlingTest.swift; sourceTree = "<group>"; };
 		503614152265FA2B00BFA8C0 /* Singeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singeleton.swift; sourceTree = "<group>"; };
-		503614172265FD1200BFA8C0 /* FileStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageTest.swift; sourceTree = "<group>"; };
 		503614192266166000BFA8C0 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
 		509096B0225F55A700FD349B /* Canada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Canada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509096B3225F55A700FD349B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				503614192266166000BFA8C0 /* ViewControllerTest.swift */,
 				509096F7225FB3F000FD349B /* RestClientTest.swift */,
 				503614102265E88000BFA8C0 /* ImageViewTest.swift */,
-				503614172265FD1200BFA8C0 /* FileStorageTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -463,7 +460,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				503614112265E88000BFA8C0 /* ImageViewTest.swift in Sources */,
-				503614182265FD1200BFA8C0 /* FileStorageTest.swift in Sources */,
 				5036141A2266166000BFA8C0 /* ViewControllerTest.swift in Sources */,
 				509096F8225FB3F000FD349B /* RestClientTest.swift in Sources */,
 				509096FB225FB44300FD349B /* CanadaRequestTest.swift in Sources */,

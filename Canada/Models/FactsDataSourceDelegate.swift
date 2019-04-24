@@ -13,12 +13,6 @@ class FactsDataSourceDelegate: NSObject, UICollectionViewDelegate, UICollectionV
     var facts: CanadaFacts?
     
     override init() {
-        do {
-            // fetch facts
-            let data = try CanadaHelper.fetchFileWithName(CanadaHelper.factsEndpoint)
-            facts = try JSONDecoder().decode(CanadaFacts.self, from: data!)
-        } catch {
-        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

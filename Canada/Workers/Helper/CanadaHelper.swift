@@ -19,33 +19,8 @@ public class CanadaHelper {
     class func showAlertMessage(controller: UIViewController, titleStr:String, messageStr:String) -> Void {
         let alert = UIAlertController(title: titleStr, message: messageStr, preferredStyle: UIAlertController.Style.alert);
         alert.addAction(UIAlertAction.init(title: "OK", style: UIAlertAction.Style.cancel, handler:nil))
+        DispatchQueue.main.async {
         controller.present(alert, animated: true, completion: nil)
-    }
-    
-    /* saveFactsToFile: save file to local directory */
-    class func saveFactsToFile(_ data: Data,_ fileName: String)throws -> Bool{
-        let filename = getDocumentsDirectory().appendingPathComponent(fileName)
-        do {
-            if (FileManager.default.fileExists(atPath: filename.absoluteString)){
-                try FileManager.default.removeItem(at: filename)
-            }
-            try data.write(to: filename)
-            return true
-        } catch {
-            throw error
-            
-    
-        }
-    }
-    
-    /* fetchFileWithName: fetch file from local directory */
-    class func fetchFileWithName(_ fileName: String)throws -> Data? {
-        let filename = getDocumentsDirectory().appendingPathComponent(fileName)
-        do {
-            let data = try Data(contentsOf: filename)
-            return data
-        } catch {
-            throw error
         }
     }
     
@@ -67,9 +42,5 @@ public class CanadaHelper {
         activityIndicator?.removeFromSuperview()
         activityIndicator = nil
     }
-    
-    private class func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
+
 }

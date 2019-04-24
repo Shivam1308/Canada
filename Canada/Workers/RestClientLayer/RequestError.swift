@@ -10,6 +10,7 @@ import UIKit
 
 enum RequestError: Error {
     case invalidRequestParam
+    case invalidDataFormat
 }
 
 /* RequestError to set error for multiple case */
@@ -18,6 +19,9 @@ extension RequestError: LocalizedError {
         switch self {
         case .invalidRequestParam:
             return NSLocalizedString("URL is missing", comment: "Request Parameter missing")
+        case .invalidDataFormat:
+            return NSLocalizedString("Invalid Data", comment: "Unable to decode the present data")
         }
+        
     }
 }
