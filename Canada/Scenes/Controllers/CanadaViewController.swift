@@ -40,6 +40,10 @@ class CanadaViewController: UIViewController {
             }
         }
     }
+    
+    deinit {
+        reachabilityManager?.stopListening()
+    }
 }
 
 extension CanadaViewController {
