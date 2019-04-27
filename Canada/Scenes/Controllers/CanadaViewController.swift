@@ -14,7 +14,6 @@ class CanadaViewController: UIViewController {
     var factCollection: UICollectionView!
     var refreshControl: UIRefreshControl!
     lazy var factDataSourceAndDelegate = FactsDataSourceDelegate()
-    let dataPresent = "DataPresent"
     let reachabilityManager = NetworkReachabilityManager()
 
     override func viewDidLoad() {
@@ -37,6 +36,7 @@ class CanadaViewController: UIViewController {
                 self.view.addSubview(self.factCollection)
             } else {
                 self.refreshControl.removeFromSuperview()
+                self.refreshControl = nil
             }
         }
     }

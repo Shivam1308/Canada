@@ -17,6 +17,7 @@ public class FactCollectionViewCell: UICollectionViewCell {
     /* photoImageView: Image for cell */
     let photoImageView: UIImageView = {
         let iv =  UIImageView(frame: CGRect.zero)
+        iv.image = UIImage(named: FactCollectionViewCell.PlaceHolder)
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFill
         iv.isUserInteractionEnabled = false
@@ -40,7 +41,7 @@ public class FactCollectionViewCell: UICollectionViewCell {
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = CanadaHelper.themeColor
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 16.5)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,6 +52,7 @@ public class FactCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(photoImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
+        clipsToBounds = true
     }
     
     override public func layoutSubviews() {

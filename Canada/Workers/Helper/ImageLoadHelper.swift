@@ -36,10 +36,11 @@ extension UIImageView {
                         self?.image = UIImage(data: data!)
                     }else{
                         self?.image = UIImage(named: FactCollectionViewCell.PlaceHolder)
-
                     }
                 }
             }).resume()
+        }else{
+            self.image = UIImage(named: FactCollectionViewCell.PlaceHolder)
         }
     }
     
